@@ -4,9 +4,18 @@ using UnityEngine;
 
 namespace EnemyEnum {
     public abstract class Attackable : Enemy {
-        protected float hp;
+        [SerializeField] protected float hp;
+        protected float curHp;
 
-        public abstract void GetDamaged(float damage);
+        public void GetDamaged(float damage) {
+            if (curHp > damage) {
+                curHp -= damage;
+            } else {
+                curHp = 0;
+                // »ç¸Á Ã¼Å©
+                eState = EnemyState.Death;
+            }
+        }
     }
 }
 

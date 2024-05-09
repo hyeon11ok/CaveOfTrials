@@ -1,14 +1,83 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace EnemyEnum {
-    public abstract class Sentinel : Attackable {
+    public class Sentinel : Attackable {
         protected Vector3 pivotPos;
         protected Vector3 spawnPos;
 
         public Vector3 PivotPos { set { pivotPos = value; } }
         public Vector3 SpawnPos { set { spawnPos = value; } }
+
+        private void Start() {
+            agent = GetComponent<NavMeshAgent>();
+            eAnim = GetComponent<Animator>();
+            eState = EnemyState.Idle;
+
+            // 테스트용
+            pivotPos = Vector3.zero;
+            spawnPos = transform.position;
+        }
+
+        private void Update() {
+            TargetSearch();
+            UpdateState();
+        }
+
+        public override void Attack() {
+
+        }
+
+        public override void UpdateState() {
+            switch (eState) {
+                case EnemyState.Idle: {
+                        if (isChase)
+                            eState = EnemyState.Chase;
+                    }
+                    break;
+                case EnemyState.Move: {
+                        Move(spawnPos);
+                        Rotate(spawnPos);
+                        if (isChase)
+                            eState = EnemyState.Chase;
+                        else if (GetDist(spawnPos) <= 0.2f)
+                            eState = EnemyState.Idle;
+                    }
+                    break;
+                case EnemyState.Chase: {
+                        Move(targetPos);
+                        Rotate(targetPos);
+                        if (!isChase)
+                            eState = EnemyState.Move;
+                        if (GetDist(targetPos) <= atkRange) {
+                            eState = EnemyState.Attack;
+                            agent.isStopped = true;
+                        }
+                    }
+                    break;
+                case EnemyState.Attack: {
+                        Rotate(targetPos);
+                        // 현재 애니메이션이 공격이고 거의 끝나는 지점일 경우
+                        if (eAnim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Attack") && eAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f) {
+                            if (!isChase)
+                                eState = EnemyState.Move;
+                            else if (GetDist(targetPos) > atkRange) {
+                                eState = EnemyState.Chase;
+                            }
+                            agent.isStopped = false;
+                        }
+                    }
+                    break;
+                case EnemyState.Death: {
+
+                    }
+                    break;
+            }
+
+            UpdateAnimState();
+        }
 
         public override void OnDrawGizmos() {
             // 인식 범위 표시
@@ -29,15 +98,6 @@ namespace EnemyEnum {
                 isChase = true;
             } else {
                 isChase = false;
-            }
-        }
-
-        public override void Move() {
-            if (isChase) {
-                agent.speed = moveSpeed;
-                agent.SetDestination(targetPos);
-            } else {
-                agent.SetDestination(spawnPos);
             }
         }
     }

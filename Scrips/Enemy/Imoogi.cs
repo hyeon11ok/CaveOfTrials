@@ -11,7 +11,7 @@ namespace EnemyEnum {
 
         void Update() {
             TargetSearch();
-            Move();
+            //Move();
         }
 
         public override void InitStatus() {

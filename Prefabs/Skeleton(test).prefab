@@ -921,6 +921,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2537519921607147677}
   - component: {fileID: 6442893661539526934}
+  - component: {fileID: 3378138941652795772}
+  - component: {fileID: 1646035346009769008}
   m_Layer: 0
   m_Name: Skeleton(test)
   m_TagString: Untagged
@@ -956,7 +958,7 @@ Animator:
   m_GameObject: {fileID: 5680942502005451654}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5a35c5f0a89b9654d897ccd7c8f81bd0, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8ef093b8ab0f3624b87f15405571e0e2, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -967,6 +969,45 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3378138941652795772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680942502005451654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edef6b0b87f3f3f45a2064639d499e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkDmg: 10
+  moveSpeed: 2
+  atkRange: 3
+  sightRange: 15
+  hp: 20
+--- !u!195 &1646035346009769008
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680942502005451654}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.29
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.58
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &5747881657303091098
 GameObject:
   m_ObjectHideFlags: 0

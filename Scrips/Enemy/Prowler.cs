@@ -47,38 +47,38 @@ namespace EnemyEnum {
             }
         }
 
-        public override void Move() {
-            if (isChase) {
-                // 추격상태
-                if (GetDist(targetPos) < 0.2f) // 플레이어의 마지막 목격지점에 도달했는데 플레이어가 보이지 않을 경우 추격 중단
-                    isChase = false;
-                else {
-                    agent.speed = chaseSpeed;
-                    agent.SetDestination(targetPos);
-                    Vector3 dir = targetPos - transform.position;
-                    dir.Normalize();
-                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 5 * Time.deltaTime);
-                }
-            } else {
-                // 배회상태
-                if (!isProwl) {
-                    if (!waitForPrwol) {
-                        Invoke("SetProwlPoint", 1);
-                        waitForPrwol = true;
-                    }
-                } else {
-                    if (GetDist(prowlPoint) > 0.2f) {
-                        agent.speed = moveSpeed;
-                        agent.SetDestination(prowlPoint);
-                        Vector3 dir = prowlPoint - transform.position;
-                        dir.Normalize();
-                        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 5 * Time.deltaTime);
-                    } else {
-                        isProwl = false;
-                    }
-                }
-            }
-        }
+        //public override void Move() {
+        //    if (isChase) {
+        //        // 추격상태
+        //        if (GetDist(targetPos) < 0.2f) // 플레이어의 마지막 목격지점에 도달했는데 플레이어가 보이지 않을 경우 추격 중단
+        //            isChase = false;
+        //        else {
+        //            agent.speed = chaseSpeed;
+        //            agent.SetDestination(targetPos);
+        //            Vector3 dir = targetPos - transform.position;
+        //            dir.Normalize();
+        //            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 5 * Time.deltaTime);
+        //        }
+        //    } else {
+        //        // 배회상태
+        //        if (!isProwl) {
+        //            if (!waitForPrwol) {
+        //                Invoke("SetProwlPoint", 1);
+        //                waitForPrwol = true;
+        //            }
+        //        } else {
+        //            if (GetDist(prowlPoint) > 0.2f) {
+        //                agent.speed = moveSpeed;
+        //                agent.SetDestination(prowlPoint);
+        //                Vector3 dir = prowlPoint - transform.position;
+        //                dir.Normalize();
+        //                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 5 * Time.deltaTime);
+        //            } else {
+        //                isProwl = false;
+        //            }
+        //        }
+        //    }
+        //}
 
         public override void TargetSearch() {
             int targetMask = 1 << 6;

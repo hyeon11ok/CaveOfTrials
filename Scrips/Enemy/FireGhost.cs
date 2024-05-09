@@ -13,7 +13,7 @@ namespace EnemyEnum {
         // Update is called once per frame
         void Update() {
             TargetSearch();
-            Move();
+            //Move();
         }
 
         public override void Attack() {

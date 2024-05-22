@@ -15,7 +15,7 @@ public class CameraMove : MonoBehaviour
         Debug.Log(offset);
     }
 
-    private void FixedUpdate() {
+    private void Update() {
         transform.position = Vector3.Lerp(transform.position, player.position +  offset, Time.deltaTime * damp);
     }
 }

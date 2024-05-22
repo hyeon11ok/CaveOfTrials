@@ -7,3 +7,11 @@ namespace EnemyEnum {
         Death
     }
 }
+
+namespace ItemEnum {
+    public enum WeaponRank {
+        Normal,
+        Unique,
+        Legend
+    }
+}

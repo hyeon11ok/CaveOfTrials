@@ -958,6 +958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91dffb27c8d221e46988fedf79ce0470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemPivot: {fileID: 2101797536}
 --- !u!114 &1251408723
 MonoBehaviour:
   m_ObjectHideFlags: 0

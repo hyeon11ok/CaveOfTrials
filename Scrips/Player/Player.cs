@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     private float rotDamp = 6;
     private CharacterController cc;
     private PlayerManager pm;
+    [SerializeField] private Transform itemPivot;
+
+    public Transform ItemPivot {  get { return itemPivot; } }
 
     // Start is called before the first frame update
     void Start()

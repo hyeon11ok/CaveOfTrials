@@ -12,7 +12,6 @@ public class CameraMove : MonoBehaviour
     void Start()
     {
         offset = transform.position - player.position;
-        Debug.Log(offset);
     }
 
     private void Update() {

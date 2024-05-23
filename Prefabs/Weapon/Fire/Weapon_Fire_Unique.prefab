@@ -7417,6 +7417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2727220041149695800}
   - component: {fileID: 5779442347444041312}
+  - component: {fileID: 7112831205616439360}
   m_Layer: 0
   m_Name: Weapon_Fire_Unique
   m_TagString: Untagged
@@ -7454,8 +7455,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286cd56fd06edef4cb373bda3010b666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   damage: 12
   weaponRank: 1
+--- !u!65 &7112831205616439360
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7598999401357064972}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.26051712, y: 1.0563442, z: 0.086521395}
+  m_Center: {x: 0.0019772053, y: 0.3168475, z: 0.0059317052}
 --- !u!1001 &4777586566542818391
 PrefabInstance:
   m_ObjectHideFlags: 0

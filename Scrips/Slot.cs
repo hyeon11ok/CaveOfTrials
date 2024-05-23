@@ -8,6 +8,10 @@ public class Slot : MonoBehaviour
     Item item; // 슬롯에 등록된 아이템 정보
     Image itemIconImg; // 등록될 아이템의 아이콘이 보여질 UI
 
+    private void Start() {
+        InitSlot();
+    }
+
     // 슬롯 최초 초기화
     public void InitSlot() {
         item = null;

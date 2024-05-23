@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     Player player;
-    Slot[] slots = new Slot[4];
+    Slot[] slots;
     int curSlotIdx = 0; // 현재 슬롯의 인덱스
     Slot curSlot;
     [SerializeField] RectTransform slotFocusTr; // 현재 슬롯을 표시하기 위한 UI
@@ -15,9 +15,9 @@ public class Inventory : MonoBehaviour
     public Slot CurSlot { get { return curSlot; } }
 
     private void Start() {
+        
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        InputManager.GetItem += GetItem;
-        InputManager.DropItem += DropItem;
+        SetSlotInfo();
     }
 
     private void Update() {
@@ -31,31 +31,27 @@ public class Inventory : MonoBehaviour
     }
 
     public void SetSlotInfo() {
-        for(int i = 0; i < transform.childCount; i++) {
+        slots = new Slot[4];
+        for (int i = 0; i < transform.childCount; i++) {
             slots[i] = transform.GetChild(i).GetComponent<Slot>();
-            slots[i].InitSlot();
         }
-        CurSlotUpdate();
+        curSlot = slots[0];
     }
 
     // 마우스 휠로 다음 슬롯으로 바꾸는 경우 현재 슬롯의 인덱스만 바꿔준다
     public void NextSlot() {
-        if(curSlotIdx == slots.Length - 1) { // 현재 슬롯이 마지막 슬롯일 경우
-            curSlotIdx = 0;
-            return;
+        if(curSlotIdx != slots.Length - 1) { // 현재 슬롯이 마지막 슬롯일 경우
+            curSlotIdx++;
+            CurSlotUpdate();
         }
-        curSlotIdx++;
-        CurSlotUpdate();
     }
 
     // 마우스 휠로 다음 슬롯으로 바꾸는 경우 현재 슬롯의 인덱스만 바꿔준다
     public void PrevSlot() {
-        if (curSlotIdx == 0) { // 현재 슬롯이 첫번째 슬롯일 경우
-            curSlotIdx = slots.Length - 1;
-            return;
+        if (curSlotIdx != 0) { // 현재 슬롯이 첫번째 슬롯일 경우
+            curSlotIdx--;
+            CurSlotUpdate();
         }
-        curSlotIdx--;
-        CurSlotUpdate();
     }
 
     // 단축키로 슬롯으로 바꾸는 경우 현재 슬롯의 인덱스만 바꿔준다
@@ -64,11 +60,11 @@ public class Inventory : MonoBehaviour
             curSlotIdx = idx;
         }
         CurSlotUpdate();
-    }
+    } 
 
     // 슬롯 포커스 이미지를 현재 슬롯의 위치로 이동
     void ChangeSlotFocus() {
-        slotFocusTr.position = Vector3.SmoothDamp(slotFocusTr.position, slots[curSlotIdx].transform.position, ref focusVel, 1f);
+        slotFocusTr.position = Vector3.SmoothDamp(slotFocusTr.position, slots[curSlotIdx].transform.position, ref focusVel, 0.2f);
     }
 
     public void GetItem(Item item) {
@@ -76,6 +72,7 @@ public class Inventory : MonoBehaviour
             curSlot.AddItem(item);
             item.transform.position = player.ItemPivot.position;
             item.transform.rotation = Quaternion.identity;
+            item.transform.parent = player.ItemPivot;
         }
     }
 
@@ -83,9 +80,8 @@ public class Inventory : MonoBehaviour
         if(curSlot.HasItem()) {
             Item drop = curSlot.DropItem();
             drop.transform.position = player.transform.position;
-            Quaternion dropRot = drop.transform.rotation;
-            dropRot.x = 90;
-            drop.transform.rotation = dropRot;
+            drop.transform.rotation = Quaternion.LookRotation(Vector3.down);
+            drop.transform.parent = null;
         }
     }
 }

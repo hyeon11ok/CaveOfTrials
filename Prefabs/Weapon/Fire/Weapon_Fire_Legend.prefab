@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9072128838354818420}
   - component: {fileID: 3174931637912883437}
   - component: {fileID: 519191875327652645}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EmbersSmall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4672,7 +4672,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3570740537445387408}
   - component: {fileID: 8392247040272672935}
-  m_Layer: 0
+  - component: {fileID: 3069080402420980854}
+  m_Layer: 7
   m_Name: Weapon_Fire_Legend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4711,8 +4712,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286cd56fd06edef4cb373bda3010b666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   damage: 15
   weaponRank: 2
+--- !u!65 &3069080402420980854
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3759645463049799092}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.26051712, y: 1.0563442, z: 0.086521395}
+  m_Center: {x: 0.0019772053, y: 0.3168475, z: 0.0059317052}
 --- !u!1 &4088283275680597110
 GameObject:
   m_ObjectHideFlags: 0
@@ -4724,7 +4747,7 @@ GameObject:
   - component: {fileID: 6155704953039584914}
   - component: {fileID: 545385559670702774}
   - component: {fileID: 6572790491767453242}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AlphaSmoke (1)
   m_TagString: 
   m_Icon: {fileID: 0}
@@ -7397,7 +7420,7 @@ GameObject:
   - component: {fileID: 2770733013870973165}
   - component: {fileID: 3095338989854383610}
   - component: {fileID: 8039266004095724977}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fire (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12131,7 +12154,7 @@ GameObject:
   - component: {fileID: 3306405150208773685}
   - component: {fileID: 7415534313807919501}
   - component: {fileID: 7694667351349382842}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FireMains (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16703,6 +16726,10 @@ PrefabInstance:
     - target: {fileID: 1612738821831882, guid: fe4758ae6aa922442a8e2ddabb84ecdd, type: 3}
       propertyPath: m_Name
       value: MoonSword 5b
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612738821831882, guid: fe4758ae6aa922442a8e2ddabb84ecdd, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4035219563349196, guid: fe4758ae6aa922442a8e2ddabb84ecdd, type: 3}
       propertyPath: m_LocalScale.x

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4767134868342294390}
   - component: {fileID: 4062886604377441188}
+  - component: {fileID: 6450181667897136310}
   m_Layer: 0
   m_Name: Weapon_Wind_Normal
   m_TagString: Untagged
@@ -45,8 +46,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de164f8734cfcc7418c50ef3113472fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   damage: 10
   weaponRank: 0
+--- !u!65 &6450181667897136310
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7211226933085517704}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.26051712, y: 1.0563442, z: 0.086521395}
+  m_Center: {x: 0.0019772053, y: 0.3168475, z: 0.0059317052}
 --- !u!1001 &1979866946676938985
 PrefabInstance:
   m_ObjectHideFlags: 0
